@@ -1,0 +1,167 @@
+# SINOPSIS TESIS S2
+
+## Kajian Biodiversitas Ikan Demersal, Kualitas Sedimen, dan Kontaminasi Mikroplastik sebagai Dasar Keamanan Pangan dalam Distribusi Hasil Perikanan untuk Program Makan Bergizi Gratis (MBG) melalui Sentra Pengolahan Pangan Gabungan (SPPG)
+
+---
+
+## I. PENDAHULUAN
+
+### 1.1 Latar Belakang
+
+Perairan Indonesia menyimpan kekayaan sumber daya ikan demersal yang sangat besar. Ikan-ikan yang hidup di dasar perairan ini menjadi salah satu sumber protein hewani utama bagi masyarakat pesisir maupun masyarakat luas. Namun, pemanfaatan hasil tangkapan ikan demersal untuk konsumsi publik tidak bisa dilakukan begitu saja tanpa memperhatikan aspek keamanan pangan.
+
+Dalam beberapa tahun terakhir, pencemaran laut oleh mikroplastik menjadi perhatian serius di kalangan peneliti dan pemerhati lingkungan. Mikroplastik yang masuk ke dalam tubuh ikan melalui rantai makanan berpotensi membahayakan kesehatan manusia ketika ikan tersebut dikonsumsi. Selain itu, kondisi sedimen dan bahan organik di dasar perairan turut mempengaruhi kualitas ikan yang hidup di zona tersebut.
+
+Pemerintah Indonesia saat ini tengah menjalankan program Makan Bergizi Gratis (MBG) yang bertujuan menyediakan makanan bernutrisi bagi anak-anak sekolah dan kelompok rentan. Salah satu komponen penting dalam program ini adalah penyediaan protein hewani dari hasil perikanan. Sentra Pengolahan Pangan Gabungan (SPPG) berperan sebagai unit yang mengolah dan mendistribusikan bahan pangan, termasuk ikan, untuk mendukung program MBG.
+
+Permasalahan muncul ketika ikan yang didistribusikan melalui SPPG belum tentu memenuhi standar keamanan pangan, terutama terkait kandungan mikroplastik dan kontaminan lainnya. Oleh karena itu, diperlukan kajian ilmiah yang komprehensif untuk memastikan bahwa ikan demersal yang ditangkap dari fishing ground aktif layak dan aman untuk dikonsumsi sebelum didistribusikan melalui SPPG ke program MBG.
+
+### 1.2 Rumusan Masalah
+
+1. Bagaimana komposisi dan biodiversitas ikan demersal pada fishing ground aktif di wilayah penelitian?
+2. Bagaimana kondisi sedimen, bahan organik, dan batimetri pada area penangkapan ikan?
+3. Sejauh mana tingkat kontaminasi mikroplastik pada sedimen dan isi perut ikan demersal?
+4. Bagaimana kelayakan hasil tangkapan ikan demersal dari aspek keamanan pangan untuk didistribusikan melalui SPPG dalam mendukung program MBG?
+
+### 1.3 Tujuan Penelitian
+
+1. Mengidentifikasi komposisi jenis dan keanekaragaman ikan demersal pada fishing ground aktif.
+2. Menganalisis karakteristik sedimen, kandungan bahan organik, dan profil batimetri di area penangkapan.
+3. Mengevaluasi tingkat kontaminasi mikroplastik pada sedimen dasar perairan dan saluran pencernaan ikan demersal.
+4. Menyusun rekomendasi keamanan pangan sebagai dasar distribusi hasil perikanan melalui SPPG untuk program MBG.
+
+### 1.4 Manfaat Penelitian
+
+- Memberikan data ilmiah tentang kondisi sumber daya ikan demersal dan lingkungan perairannya.
+- Menyediakan informasi tingkat kontaminasi mikroplastik yang dapat digunakan sebagai acuan keamanan pangan.
+- Menjadi dasar ilmiah bagi SPPG dalam menyeleksi dan mendistribusikan hasil perikanan yang aman untuk program MBG.
+- Mendukung kebijakan pemerintah dalam menjamin mutu dan keamanan pangan pada program Makan Bergizi Gratis.
+
+---
+
+## II. METODOLOGI PENELITIAN
+
+### 2.1 Sumber Data dan Objek Penelitian
+
+Objek penelitian meliputi ikan demersal, biodiversitas, sedimen, bahan organik, batimetri, makroplastik, mikroplastik, dan fishing ground aktif. Data diambil dari hasil tangkapan **sondong** dan **bottom gill net** pada **Musim Timur** dan **Musim Peralihan**.
+
+### 2.2 Metode Penelitian
+
+Penelitian ini menggunakan metode deskriptif eksploratif dengan pendekatan komparatif.
+
+**Pengumpulan Data Ikan:**
+Data ikan dikumpulkan untuk mengetahui biodiversitas ikan demersal. Setiap jenis ikan yang tertangkap dicatat, dihitung, dan diidentifikasi menggunakan buku panduan identifikasi ikan.
+
+**Analisis Sedimen dan Bahan Organik:**
+Sedimen diambil untuk mengetahui jenis substrat dasar perairan dan kandungan bahan organiknya. Data ini kemudian dikaitkan dengan profil batimetri untuk membuat peta sebaran fishing ground aktif.
+
+**Analisis Makroplastik dan Mikroplastik:**
+Sampel makroplastik yang ditemukan di area penelitian dikumpulkan, dihitung, dan dikelompokkan berdasarkan jenis dan ukurannya. Mikroplastik dianalisis pada sampel sedimen dan isi perut ikan untuk melihat potensi dampaknya terhadap keamanan pangan.
+
+**Analisis Keamanan Pangan:**
+Hasil analisis mikroplastik pada ikan dijadikan dasar untuk menilai kelayakan ikan sebagai bahan pangan. Penilaian ini mengacu pada standar keamanan pangan yang berlaku dan menjadi rekomendasi bagi SPPG dalam mendistribusikan hasil perikanan untuk program MBG.
+
+### 2.3 Analisis Data
+
+- Indeks keanekaragaman Shannon-Wiener untuk biodiversitas ikan.
+- Analisis granulometri untuk karakterisasi sedimen.
+- Identifikasi dan kuantifikasi mikroplastik menggunakan mikroskop dan FTIR.
+- Analisis deskriptif komparatif antara musim tangkap.
+- Pemetaan fishing ground menggunakan data batimetri dan sebaran ikan.
+
+---
+
+## III. INPUT DAN OUTPUT PENELITIAN
+
+### 3.1 Input Penelitian
+
+| No | Komponen Input | Keterangan |
+|----|----------------|------------|
+| 1 | Data tangkapan ikan demersal | Hasil tangkapan sondong dan bottom gill net pada Musim Timur dan Musim Peralihan |
+| 2 | Sampel sedimen dasar perairan | Diambil dari titik-titik fishing ground aktif |
+| 3 | Data batimetri | Kedalaman perairan pada area penangkapan |
+| 4 | Sampel bahan organik | Kandungan organik dalam sedimen |
+| 5 | Sampel makroplastik | Sampah plastik makro di area penelitian |
+| 6 | Sampel mikroplastik | Dari sedimen dan isi perut ikan demersal |
+| 7 | Data musim penangkapan | Perbandingan Musim Timur dan Musim Peralihan |
+| 8 | Standar keamanan pangan | Regulasi BPOM dan SNI terkait kontaminan pada produk perikanan |
+
+### 3.2 Output Penelitian
+
+| No | Komponen Output | Keterangan |
+|----|-----------------|------------|
+| 1 | Daftar jenis dan indeks biodiversitas ikan demersal | Komposisi spesies beserta nilai keanekaragaman |
+| 2 | Peta sebaran fishing ground aktif | Berdasarkan data batimetri dan kepadatan ikan |
+| 3 | Profil sedimen dan bahan organik | Karakteristik substrat dasar di area penangkapan |
+| 4 | Tingkat kontaminasi mikroplastik | Pada sedimen dan isi perut ikan |
+| 5 | Penilaian kelayakan keamanan pangan | Status aman atau tidaknya ikan untuk dikonsumsi |
+| 6 | Rekomendasi distribusi hasil perikanan untuk SPPG | Panduan bagi SPPG dalam memilih ikan yang layak untuk program MBG |
+| 7 | Rekomendasi mitigasi pencemaran | Langkah-langkah mengurangi dampak mikroplastik terhadap hasil perikanan |
+
+---
+
+## IV. KERANGKA PIKIR: KEAMANAN PANGAN UNTUK DISTRIBUSI HASIL PERIKANAN KE SPPG (PROGRAM MBG)
+
+### 4.1 Alur Distribusi yang Diusulkan
+
+```
+Fishing Ground Aktif
+        |
+        v
+Penangkapan Ikan Demersal (Sondong & Bottom Gill Net)
+        |
+        v
+Uji Kualitas & Keamanan Pangan
+(Analisis Mikroplastik, Kontaminan, Kesegaran)
+        |
+        v
+[LAYAK] -----> SPPG (Sentra Pengolahan Pangan Gabungan)
+                        |
+                        v
+                Pengolahan & Pengemasan
+                        |
+                        v
+                Distribusi ke Program MBG
+                (Sekolah & Kelompok Sasaran)
+        |
+[TIDAK LAYAK] --> Ditolak / Dialihkan ke penggunaan non-pangan
+```
+
+### 4.2 Kriteria Keamanan Pangan untuk Distribusi ke SPPG
+
+1. **Kandungan mikroplastik** pada isi perut dan daging ikan berada di bawah ambang batas yang ditetapkan.
+2. **Kondisi fishing ground** tidak tercemar berat berdasarkan analisis sedimen dan bahan organik.
+3. **Kesegaran ikan** memenuhi standar organoleptik yang berlaku.
+4. **Tidak mengandung kontaminan berbahaya** lainnya yang melebihi batas aman konsumsi.
+
+### 4.3 Peran SPPG dalam Program MBG
+
+SPPG berfungsi sebagai garda terdepan dalam menjamin mutu pangan yang akan didistribusikan melalui program MBG. Dengan adanya data ilmiah dari penelitian ini, SPPG dapat:
+
+- Menentukan fishing ground mana yang hasil tangkapannya layak digunakan untuk program MBG.
+- Menetapkan standar penerimaan bahan baku ikan berdasarkan tingkat kontaminasi mikroplastik.
+- Menyusun jadwal pengadaan ikan berdasarkan musim tangkap yang menghasilkan ikan dengan kualitas terbaik.
+- Memberikan jaminan keamanan pangan kepada masyarakat penerima manfaat program MBG.
+
+---
+
+## V. RENCANA JADWAL PENELITIAN
+
+| Kegiatan | Bulan 1-2 | Bulan 3-4 | Bulan 5-6 | Bulan 7-8 | Bulan 9-10 |
+|----------|:---------:|:---------:|:---------:|:---------:|:----------:|
+| Persiapan & survei awal | X | | | | |
+| Pengambilan data Musim Timur | | X | | | |
+| Pengambilan data Musim Peralihan | | | X | | |
+| Analisis laboratorium | | | X | X | |
+| Pengolahan data & analisis | | | | X | X |
+| Penulisan tesis | | | | | X |
+
+---
+
+## VI. DAFTAR PUSTAKA
+
+*(Akan dilengkapi sesuai dengan referensi yang digunakan)*
+
+---
+
+**Catatan:** Sinopsis ini disusun sebagai gambaran umum rencana penelitian tesis S2 yang mengkaji hubungan antara biodiversitas ikan demersal, kondisi lingkungan perairan, dan keamanan pangan sebagai landasan ilmiah bagi distribusi hasil perikanan melalui SPPG untuk mendukung program Makan Bergizi Gratis (MBG) pemerintah Indonesia.
