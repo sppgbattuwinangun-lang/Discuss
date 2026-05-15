@@ -33,13 +33,21 @@
   });
 
   function showLogin() {
-    $('#login-view').hidden = false;
-    $('#app-view').hidden = true;
+    const lv = $('#login-view');
+    const av = $('#app-view');
+    lv.hidden = false;
+    lv.style.display = '';
+    av.hidden = true;
+    av.style.display = 'none';
   }
 
   async function enterApp() {
-    $('#login-view').hidden = true;
-    $('#app-view').hidden = false;
+    const lv = $('#login-view');
+    const av = $('#app-view');
+    lv.hidden = true;
+    lv.style.display = 'none';
+    av.hidden = false;
+    av.style.display = '';
     const session = window.SPPGAuth.getSession();
     if (session) {
       $('#user-name').textContent = session.username;
@@ -548,14 +556,18 @@
     okBtn.textContent = opts.okLabel || 'Ya, Lanjutkan';
     okBtn.className = opts.okClass || 'btn-danger';
     modalCallback = cb;
-    $('#modal-confirm').hidden = false;
+    const m = $('#modal-confirm');
+    m.hidden = false;
+    m.style.display = '';
     okBtn.onclick = () => {
       closeModal();
       if (modalCallback) modalCallback();
     };
   }
   function closeModal() {
-    $('#modal-confirm').hidden = true;
+    const m = $('#modal-confirm');
+    m.hidden = true;
+    m.style.display = 'none';
     modalCallback = null;
   }
 
