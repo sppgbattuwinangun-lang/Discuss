@@ -9,12 +9,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Inline guard: pastikan elemen [hidden] benar-benar tersembunyi
+       walaupun styles.css belum termuat / di-cache versi lama -->
+  <style>
+    [hidden] { display: none !important; }
+    .is-hidden { display: none !important; }
+  </style>
+  <link rel="stylesheet" href="styles.css?v=3" />
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
-  <script src="auth.js" defer></script>
-  <script src="data.js" defer></script>
-  <script src="app.js" defer></script>
+  <script src="auth.js?v=3" defer></script>
+  <script src="data.js?v=3" defer></script>
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
   <!-- ===================== LOGIN VIEW ===================== -->
@@ -80,7 +86,7 @@
   </section>
 
   <!-- ===================== APP VIEW ===================== -->
-  <section id="app-view" class="app-shell" hidden>
+  <section id="app-view" class="app-shell" hidden style="display:none">
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-brand">
@@ -409,7 +415,7 @@
   </section>
 
   <!-- ===================== MODAL CONFIRM ===================== -->
-  <div class="modal-backdrop" id="modal-confirm" hidden>
+  <div class="modal-backdrop" id="modal-confirm" hidden style="display:none">
     <div class="modal">
       <h3 id="modal-title">Konfirmasi</h3>
       <p id="modal-message">Apakah Anda yakin?</p>
