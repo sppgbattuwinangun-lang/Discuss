@@ -15,12 +15,12 @@
     [hidden] { display: none !important; }
     .is-hidden { display: none !important; }
   </style>
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
-  <script src="auth.js?v=3" defer></script>
-  <script src="data.js?v=3" defer></script>
-  <script src="app.js?v=3" defer></script>
+  <script src="auth.js?v=4" defer></script>
+  <script src="data.js?v=4" defer></script>
+  <script src="app.js?v=4" defer></script>
 </head>
 <body>
   <!-- ===================== LOGIN VIEW ===================== -->
@@ -428,5 +428,37 @@
 
   <!-- ===================== TOAST ===================== -->
   <div class="toast-stack" id="toast-stack"></div>
+
+  <!-- Defensive cleanup: pastikan tidak ada modal/app-view yang nyangkut tampil
+       saat halaman awal load. Berjalan SEBELUM script utama. -->
+  <script>
+    (function () {
+      function hide(el) {
+        if (!el) return;
+        el.hidden = true;
+        el.setAttribute('hidden', '');
+        el.style.display = 'none';
+      }
+      function show(el) {
+        if (!el) return;
+        el.hidden = false;
+        el.removeAttribute('hidden');
+        el.style.display = '';
+      }
+      // Pada saat awal load, paksa: app-view & modal hidden, login-view shown.
+      hide(document.getElementById('app-view'));
+      hide(document.getElementById('modal-confirm'));
+      show(document.getElementById('login-view'));
+      // Expose helper buat panic-close
+      window.__sppgForceHide = hide;
+      window.__sppgForceShow = show;
+      // Tombol ESC = tutup modal (escape hatch)
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          hide(document.getElementById('modal-confirm'));
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
