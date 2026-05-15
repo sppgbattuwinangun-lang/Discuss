@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sistem Informasi Profil Mitra & SPPG — Dashboard manajemen mitra dengan keamanan admin." />
+  <title>SPPG Battuwinangun — Sistem Profil Mitra</title>
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍱</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+  <script src="auth.js" defer></script>
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <!-- ===================== LOGIN VIEW ===================== -->
+  <section id="login-view" class="login-screen">
+    <div class="login-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <div class="login-card glass">
+      <div class="login-brand">
+        <div class="brand-logo">🍱</div>
+        <div>
+          <h1>SPPG Battuwinangun</h1>
+          <p>Sistem Profil Mitra &amp; SPPG</p>
+        </div>
+      </div>
+
+      <h2 class="login-title">Masuk Admin</h2>
+      <p class="login-subtitle">Akses terbatas — hanya untuk administrator yang memiliki kredensial.</p>
+
+      <form id="login-form" autocomplete="off" novalidate>
+        <label class="input-group">
+          <span class="input-label">Username</span>
+          <div class="input-wrap">
+            <span class="input-icon">👤</span>
+            <input type="text" id="login-username" name="username" required placeholder="Masukkan username" autocomplete="username" />
+          </div>
+        </label>
+
+        <label class="input-group">
+          <span class="input-label">Password</span>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="login-password" name="password" required placeholder="Masukkan password" autocomplete="current-password" />
+            <button type="button" class="input-action" id="toggle-password" aria-label="Tampilkan password">👁️</button>
+          </div>
+        </label>
+
+        <div class="login-row">
+          <label class="checkbox">
+            <input type="checkbox" id="remember-me" />
+            <span>Ingat saya</span>
+          </label>
+          <span class="login-hint">Default: <code>admin</code> / <code>sppg2026</code></span>
+        </div>
+
+        <button type="submit" class="btn-primary btn-full">
+          <span>Masuk</span>
+          <span class="arrow">→</span>
+        </button>
+
+        <div id="login-error" class="alert alert-danger" hidden></div>
+      </form>
+
+      <div class="login-footer">
+        <span>© 2026 SPPG Battuwinangun</span>
+        <span class="dot">•</span>
+        <span>v1.0</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== APP VIEW ===================== -->
+  <section id="app-view" class="app-shell" hidden>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">🍱</div>
+        <div>
+          <h2>SPPG</h2>
+          <p>Battuwinangun</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">📊</span><span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-page="mitra">
+          <span class="nav-icon">👥</span><span>Profil Mitra</span>
+        </button>
+        <button class="nav-item" data-page="tambah">
+          <span class="nav-icon">➕</span><span>Tambah Data</span>
+        </button>
+        <button class="nav-item" data-page="impor">
+          <span class="nav-icon">📥</span><span>Impor / Ekspor</span>
+        </button>
+        <button class="nav-item" data-page="pengaturan">
+          <span class="nav-icon">⚙️</span><span>Pengaturan</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar" id="user-avatar">A</div>
+          <div class="user-info">
+            <strong id="user-name">Admin</strong>
+            <span>Administrator</span>
+          </div>
+        </div>
+        <button class="btn-ghost btn-full" id="btn-logout">
+          <span>🚪</span><span>Keluar</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <header class="main-header">
+        <div>
+          <h1 id="page-title">Dashboard</h1>
+          <p id="page-subtitle" class="page-subtitle">Ringkasan data Profil Mitra &amp; SPPG</p>
+        </div>
+        <div class="header-actions">
+          <div class="live-indicator" title="Data realtime">
+            <span class="dot-live"></span><span>Live</span>
+          </div>
+          <span class="header-time" id="header-time">--:--:--</span>
+        </div>
+      </header>
+
+      <!-- ===================== DASHBOARD PAGE ===================== -->
+      <div class="page" data-page="dashboard">
+        <div class="stats-grid">
+          <div class="stat-card stat-blue">
+            <div class="stat-icon">👥</div>
+            <div class="stat-body">
+              <span class="stat-label">Total Mitra</span>
+              <strong class="stat-value" id="stat-total">0</strong>
+              <span class="stat-trend">Seluruh anggota terdaftar</span>
+            </div>
+          </div>
+          <div class="stat-card stat-green">
+            <div class="stat-icon">✅</div>
+            <div class="stat-body">
+              <span class="stat-label">Mitra Aktif</span>
+              <strong class="stat-value" id="stat-aktif">0</strong>
+              <span class="stat-trend">Status aktif saat ini</span>
+            </div>
+          </div>
+          <div class="stat-card stat-orange">
+            <div class="stat-icon">💰</div>
+            <div class="stat-body">
+              <span class="stat-label">Total Honor</span>
+              <strong class="stat-value" id="stat-honor">Rp 0</strong>
+              <span class="stat-trend">Akumulasi honor</span>
+            </div>
+          </div>
+          <div class="stat-card stat-purple">
+            <div class="stat-icon">🛡️</div>
+            <div class="stat-body">
+              <span class="stat-label">Terdaftar BPJS</span>
+              <strong class="stat-value" id="stat-bpjs">0</strong>
+              <span class="stat-trend">Memiliki No. BPJS Ketenagakerjaan</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <header><h3>Distribusi Desil</h3><span class="chip">Realtime</span></header>
+            <canvas id="chart-desil"></canvas>
+          </div>
+          <div class="chart-card">
+            <header><h3>Jenis Tugas</h3><span class="chip">Realtime</span></header>
+            <canvas id="chart-tugas"></canvas>
+          </div>
+          <div class="chart-card span-2">
+            <header><h3>Distribusi Jenis Kelamin &amp; Status</h3><span class="chip">Realtime</span></header>
+            <canvas id="chart-jk"></canvas>
+          </div>
+        </div>
+
+        <div class="recent-card">
+          <header>
+            <h3>5 Mitra Terbaru</h3>
+            <button class="btn-link" data-page="mitra">Lihat semua →</button>
+          </header>
+          <div id="recent-list" class="recent-list"></div>
+        </div>
+      </div>
+
+      <!-- ===================== MITRA TABLE PAGE ===================== -->
+      <div class="page" data-page="mitra" hidden>
+        <div class="toolbar">
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="search" id="search-input" placeholder="Cari nama, kode, jenis tugas, telepon..." />
+          </div>
+          <div class="toolbar-filters">
+            <select id="filter-status" class="select">
+              <option value="">Semua Status</option>
+              <option value="Aktif">Aktif</option>
+              <option value="Non-Aktif">Non-Aktif</option>
+            </select>
+            <select id="filter-tugas" class="select">
+              <option value="">Semua Jenis Tugas</option>
+            </select>
+            <select id="filter-desil" class="select">
+              <option value="">Semua Desil</option>
+              <option value="1">Desil 1</option>
+              <option value="2">Desil 2</option>
+              <option value="3">Desil 3</option>
+              <option value="4">Desil 4</option>
+              <option value="5">Desil 5</option>
+              <option value="6-10">Desil 6-10</option>
+              <option value="(kosong)">Belum Diisi</option>
+            </select>
+            <button class="btn-primary" id="btn-add-mitra">
+              <span>➕</span><span>Tambah</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-scroll">
+            <table class="data-table" id="mitra-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Kode Validasi</th>
+                  <th>Nama</th>
+                  <th>Jenis Tugas</th>
+                  <th>Jenis Kelamin</th>
+                  <th>Usia</th>
+                  <th>Telepon</th>
+                  <th>Honor</th>
+                  <th>Desil</th>
+                  <th>Status</th>
+                  <th class="th-aksi">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="mitra-tbody"></tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <span id="table-info">Menampilkan 0 dari 0 mitra</span>
+            <div class="pager" id="pager"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== TAMBAH PAGE ===================== -->
+      <div class="page" data-page="tambah" hidden>
+        <div class="form-card">
+          <h2 id="form-title">Tambah Data Mitra</h2>
+          <p class="muted">Lengkapi seluruh kolom di bawah. Field bertanda * wajib diisi.</p>
+          <form id="mitra-form" autocomplete="off" class="form-grid">
+            <input type="hidden" id="f-id" />
+
+            <label class="field"><span>Kode Validasi *</span>
+              <input type="text" id="f-kode" required placeholder="ex: 6CB7-D6C5" />
+            </label>
+            <label class="field"><span>Nama Lengkap *</span>
+              <input type="text" id="f-nama" required placeholder="Nama lengkap" />
+            </label>
+            <label class="field"><span>Jenis Tugas *</span>
+              <input type="text" id="f-tugas" required list="dl-tugas" placeholder="ex: Kepala SPPG" />
+              <datalist id="dl-tugas"></datalist>
+            </label>
+            <label class="field"><span>Nomor SK Tugas</span>
+              <input type="text" id="f-nosk" placeholder="ex: SKEP 40 SESTAMA TAHUN 2025" />
+            </label>
+            <label class="field"><span>Tanggal SK</span>
+              <input type="text" id="f-tglsk" placeholder="DD-MM-YYYY" />
+            </label>
+            <label class="field"><span>Jenis Kelamin *</span>
+              <select id="f-jk" required>
+                <option value="">-- Pilih --</option>
+                <option>Laki-laki</option>
+                <option>Perempuan</option>
+              </select>
+            </label>
+            <label class="field"><span>Tanggal Lahir</span>
+              <input type="text" id="f-tgllahir" placeholder="ex: Senin, 01-01-2000" />
+            </label>
+            <label class="field"><span>Usia</span>
+              <input type="text" id="f-usia" placeholder="ex: 24 Tahun" />
+            </label>
+            <label class="field"><span>Telepon</span>
+              <input type="tel" id="f-telp" placeholder="08xxxxxxxxxx" />
+            </label>
+            <label class="field"><span>e-Mail</span>
+              <input type="email" id="f-email" placeholder="nama@email.com" />
+            </label>
+            <label class="field span-2"><span>Alamat</span>
+              <textarea id="f-alamat" rows="2" placeholder="Alamat lengkap"></textarea>
+            </label>
+            <label class="field"><span>Honor (Rp)</span>
+              <input type="number" id="f-honor" min="0" step="1000" placeholder="0" />
+            </label>
+            <label class="field"><span>No. BPJS Ketenagakerjaan</span>
+              <input type="text" id="f-bpjs" placeholder="Nomor BPJS" />
+            </label>
+            <label class="field"><span>Status *</span>
+              <select id="f-status" required>
+                <option value="Aktif">Aktif</option>
+                <option value="Non-Aktif">Non-Aktif</option>
+              </select>
+            </label>
+            <label class="field"><span>Desil</span>
+              <select id="f-desil">
+                <option value="">-- Belum Diisi --</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6-10">6-10</option>
+              </select>
+            </label>
+
+            <div class="form-actions">
+              <button type="button" class="btn-ghost" id="btn-cancel-form">Batal</button>
+              <button type="submit" class="btn-primary"><span>💾</span><span>Simpan</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ===================== IMPOR / EKSPOR ===================== -->
+      <div class="page" data-page="impor" hidden>
+        <div class="impor-grid">
+          <div class="card-action">
+            <div class="card-action-icon">📥</div>
+            <h3>Impor dari Excel</h3>
+            <p>Unggah file <code>.xlsx</code> sesuai format Profil Mitra SPPG. Data akan ditambahkan ke daftar.</p>
+            <input type="file" id="file-import" accept=".xlsx,.xls" hidden />
+            <button class="btn-primary btn-full" id="btn-import">Pilih File &amp; Impor</button>
+            <label class="checkbox" style="margin-top:.75rem">
+              <input type="checkbox" id="import-replace" />
+              <span>Ganti seluruh data (replace, bukan append)</span>
+            </label>
+          </div>
+
+          <div class="card-action">
+            <div class="card-action-icon">📤</div>
+            <h3>Ekspor ke Excel</h3>
+            <p>Unduh seluruh data mitra dalam format <code>.xlsx</code> rapi dengan dropdown desil aktif.</p>
+            <button class="btn-primary btn-full" id="btn-export">Unduh Excel Sekarang</button>
+            <button class="btn-ghost btn-full" id="btn-export-json" style="margin-top:.6rem">Unduh JSON (backup)</button>
+          </div>
+
+          <div class="card-action">
+            <div class="card-action-icon">🌱</div>
+            <h3>Reset ke Data Awal</h3>
+            <p>Kembalikan ke data seed (52 mitra dari Excel awal). Tindakan ini tidak bisa dibatalkan.</p>
+            <button class="btn-danger btn-full" id="btn-reset">Reset Data</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== PENGATURAN ===================== -->
+      <div class="page" data-page="pengaturan" hidden>
+        <div class="settings-grid">
+          <div class="card-action">
+            <h3>Ubah Password Admin</h3>
+            <p class="muted">Password admin disimpan terenkripsi (SHA-256) di browser ini saja.</p>
+            <form id="form-password" class="form-mini">
+              <label class="field"><span>Password Lama</span>
+                <input type="password" id="old-password" required />
+              </label>
+              <label class="field"><span>Password Baru (min. 6 karakter)</span>
+                <input type="password" id="new-password" minlength="6" required />
+              </label>
+              <label class="field"><span>Konfirmasi Password Baru</span>
+                <input type="password" id="confirm-password" minlength="6" required />
+              </label>
+              <button type="submit" class="btn-primary">Simpan Password</button>
+              <div id="pw-msg" class="alert" hidden></div>
+            </form>
+          </div>
+
+          <div class="card-action">
+            <h3>Tentang Aplikasi</h3>
+            <ul class="info-list">
+              <li><strong>Nama</strong><span>SPPG Profil Mitra Dashboard</span></li>
+              <li><strong>Versi</strong><span>1.0.0</span></li>
+              <li><strong>Mode Penyimpanan</strong><span>Browser (localStorage)</span></li>
+              <li><strong>Library</strong><span>SheetJS, Chart.js, Vanilla JS</span></li>
+              <li><strong>Lisensi</strong><span>Internal — SPPG Battuwinangun</span></li>
+            </ul>
+            <p class="muted" style="margin-top:.75rem">
+              Data tersimpan di browser perangkat Anda. Untuk backup, gunakan menu Ekspor.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- ===================== MODAL CONFIRM ===================== -->
+  <div class="modal-backdrop" id="modal-confirm" hidden>
+    <div class="modal">
+      <h3 id="modal-title">Konfirmasi</h3>
+      <p id="modal-message">Apakah Anda yakin?</p>
+      <div class="modal-actions">
+        <button class="btn-ghost" id="modal-cancel">Batal</button>
+        <button class="btn-danger" id="modal-ok">Ya, Lanjutkan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== TOAST ===================== -->
+  <div class="toast-stack" id="toast-stack"></div>
+</body>
+</html>
