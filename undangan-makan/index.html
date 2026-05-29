@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Spesial Buat Kamu </title>
+  <meta name="description" content="Undangan makan siang romantis spesial untuk kamu yang spesial." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Layer Hati Bertaburan -->
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <!-- Layer Confetti saat MAU -->
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <!-- Tombol Musik -->
+  <button id="musicBtn" class="music-btn" title="Putar musik romantis" aria-label="Putar musik">
+    <span id="musicIcon"></span>
+  </button>
+
+  <!-- ============ AMPLOP PEMBUKA ============ -->
+  <section id="cover" class="cover">
+    <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Buka undangan">
+      <div class="env-flap"></div>
+      <div class="env-body">
+        <div class="env-letter">
+          <div class="seal pulse"></div>
+          <p class="for">Untuk Calon Pacarku Tersayang </p>
+          <p class="hint">(Klik amplopnya yaa~)</p>
+        </div>
+      </div>
+    </div>
+    <p class="cover-tap">Tap / klik amplop untuk membuka </p>
+  </section>
+
+  <!-- ============ ISI UNDANGAN ============ -->
+  <main id="invite" class="invite hidden">
+
+    <header class="hero">
+      <div class="floaters" aria-hidden="true">
+        <span class="floaty f1"></span>
+        <span class="floaty f2"></span>
+        <span class="floaty f3"></span>
+        <span class="floaty f4"></span>
+        <span class="floaty f5"></span>
+        <span class="floaty f6"></span>
+      </div>
+
+      <p class="kicker">— Sebuah Undangan Yang Sangat Penting —</p>
+      <h1 class="title">
+        <span class="word">Halo,</span>
+        <span class="word">Calon</span>
+        <span class="word rainbow">Pacarku</span>
+        <span class="emoji bounce"></span>
+      </h1>
+      <p class="subtitle typing">
+        Aku punya pertanyaan kecil, tapi penting banget...
+      </p>
+    </header>
+
+    <section class="card glass">
+      <div class="card-deco top-left"></div>
+      <div class="card-deco top-right"></div>
+      <div class="card-deco bottom-left"></div>
+      <div class="card-deco bottom-right"></div>
+
+      <h2 class="card-title">
+        <span class="wiggle"></span>
+        Maukah Kamu Makan Bareng Aku?
+        <span class="wiggle"></span>
+      </h2>
+
+      <ul class="details">
+        <li>
+          <span class="ico spin-slow"></span>
+          <div>
+            <small>Hari & Jam</small>
+            <strong>Besok, Pukul 11.00 Siang</strong>
+          </div>
+        </li>
+        <li>
+          <span class="ico bounce-soft"></span>
+          <div>
+            <small>Tempat</small>
+            <strong>Rumah Makan Doyok</strong>
+          </div>
+        </li>
+        <li>
+          <span class="ico heartbeat"></span>
+          <div>
+            <small>Bersama</small>
+            <strong>Aku & Kamu (semoga )</strong>
+          </div>
+        </li>
+        <li>
+          <span class="ico wobble"></span>
+          <div>
+            <small>Dress Code</small>
+            <strong>Pakai senyum kamu yang paling manis </strong>
+          </div>
+        </li>
+      </ul>
+
+      <p class="ps">
+        P.S. Aku udah latihan ngobrol di depan kaca biar gak salting.
+        Tapi kayaknya tetep bakal salting sih, hehe.
+      </p>
+
+      <div class="actions">
+        <button id="btnYes" class="btn-yes shine">
+          <span> Mau dong, ayo!</span>
+        </button>
+        <button id="btnNo" class="btn-no">
+          <span> Gak mau ah</span>
+        </button>
+      </div>
+
+      <p class="tiny-hint" id="tinyHint">
+        (Psst… coba arahin kursor ke tombol "Gak mau" )
+      </p>
+    </section>
+
+    <footer class="foot">
+      <p>Dibuat dengan <span class="beat"></span> khusus buat kamu.</p>
+    </footer>
+  </main>
+
+  <!-- ============ MODAL "MAU" ============ -->
+  <div id="yesModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="yesTitle">
+    <div class="modal-card pop">
+      <div class="big-emoji bounce"></div>
+      <h3 id="yesTitle">YEAYYY!! </h3>
+      <p>Kamu bikin hari ini jadi paling indah sedunia.<br>
+         Sampai ketemu besok jam <strong>11.00</strong> di <strong>Rumah Makan Doyok</strong> ya!</p>
+      <p class="small">Aku jemput? Atau ketemu di sana? Chat aku yaa </p>
+      <button class="btn-yes" onclick="closeYes()">Sip, sampai besok!</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
