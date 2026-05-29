@@ -1,5 +1,5 @@
 /* =========================================================
-   Undangan Makan Romantis untuk Oktalina - Script
+   Undangan Makan Romantis untuk Olin - Script
    ========================================================= */
 
 const NAMA = 'Olin';
