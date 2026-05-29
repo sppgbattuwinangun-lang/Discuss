@@ -22,7 +22,7 @@ function spawnHeart() {
 }
 setInterval(spawnHeart, 350);
 
-/* ---------- 1b. NAMA "OKTALINA" MELAYANG DI BACKGROUND ---------- */
+/* ---------- 1b. NAMA "OLIN" MELAYANG DI BACKGROUND ---------- */
 const nameLayer = document.getElementById('nameFloats');
 function spawnName() {
   const n = document.createElement('span');
