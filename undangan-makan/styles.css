@@ -1,5 +1,5 @@
 /* =========================================================
-   Undangan Makan Romantis - Stylesheet
+   Undangan Makan Romantis untuk Oktalina - Stylesheet
    ========================================================= */
 
 :root {
@@ -13,6 +13,7 @@
   --rose:     #ff6b9d;
   --gold:     #ffd166;
   --cream:    #fff8f1;
+  --paper:    #fffaf3;
   --ink:      #4a1d2c;
   --ink-soft: #7a3a4f;
   --shadow:   0 20px 50px rgba(255, 77, 141, .25);
@@ -43,9 +44,7 @@ html, body {
 
 .hidden { display: none !important; }
 
-/* =========================================================
-   HATI BERTABURAN
-   ========================================================= */
+/* HATI BERTABURAN */
 .hearts {
   position: fixed;
   inset: 0;
@@ -67,9 +66,30 @@ html, body {
   100% { transform: translateY(-110vh) rotate(360deg) scale(1.1); opacity: 0; }
 }
 
-/* =========================================================
-   TOMBOL MUSIK
-   ========================================================= */
+/* TULISAN "OKTALINA" MELAYANG */
+.name-floats {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.name-float {
+  position: absolute;
+  font-family: 'Brush Script MT', 'Segoe Script', cursive;
+  font-weight: 700;
+  font-size: clamp(28px, 6vw, 64px);
+  color: rgba(255, 77, 141, .14);
+  white-space: nowrap;
+  user-select: none;
+  animation: nameFloat 14s linear infinite;
+}
+@keyframes nameFloat {
+  from { transform: translateX(-30vw) rotate(-8deg); }
+  to   { transform: translateX(130vw) rotate(-8deg); }
+}
+
+/* TOMBOL MUSIK */
 .music-btn {
   position: fixed;
   top: 18px;
@@ -90,9 +110,7 @@ html, body {
 .music-btn.playing { animation: musicSpin 4s linear infinite; }
 @keyframes musicSpin { to { transform: rotate(360deg); } }
 
-/* =========================================================
-   AMPLOP COVER
-   ========================================================= */
+/* AMPLOP COVER */
 .cover {
   position: relative;
   z-index: 2;
@@ -104,6 +122,18 @@ html, body {
   padding: 24px;
   text-align: center;
 }
+.cover-pre {
+  margin: 0 0 16px;
+  font-style: italic;
+  color: var(--ink-soft);
+  letter-spacing: 1px;
+  animation: fadeInDown 1s ease both;
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .envelope {
   position: relative;
   width: min(360px, 86vw);
@@ -138,15 +168,13 @@ html, body {
   transform-origin: top center;
   transition: transform .8s cubic-bezier(.68,-0.55,.27,1.55);
 }
-.envelope.open .env-flap {
-  transform: rotateX(180deg);
-}
+.envelope.open .env-flap { transform: rotateX(180deg); }
 .env-letter {
   position: absolute;
   inset: 14px;
   background: var(--cream);
   border-radius: 10px;
-  padding: 28px 16px 16px;
+  padding: 22px 16px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -166,21 +194,37 @@ html, body {
   position: relative;
   margin-bottom: 10px;
   box-shadow: 0 6px 14px rgba(201, 46, 99, .45);
-}
-.seal::after {
-  content: "";
-  position: absolute;
-  inset: 0;
   display: grid;
   place-items: center;
-  font-size: 28px;
-  color: #fff8;
+  font-size: 26px;
+  color: #fff;
 }
 .for {
   margin: 0;
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.for-name {
+  margin: 4px 0 8px;
+  font-family: 'Brush Script MT', 'Segoe Script', cursive;
+  font-size: 32px;
+  color: var(--pink-600);
   font-weight: 700;
-  color: var(--ink);
-  font-size: 17px;
+}
+.shimmer {
+  background: linear-gradient(90deg, var(--pink-500), var(--gold), var(--pink-600), var(--pink-500));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmerMove 3s linear infinite;
+}
+@keyframes shimmerMove {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
 }
 .hint {
   margin: 6px 0 0;
@@ -195,9 +239,7 @@ html, body {
   animation: pulse 1.6s ease-in-out infinite;
 }
 
-/* =========================================================
-   ISI UNDANGAN
-   ========================================================= */
+/* ISI UNDANGAN */
 .invite {
   position: relative;
   z-index: 2;
@@ -219,7 +261,7 @@ html, body {
   margin: 0 0 10px;
 }
 .title {
-  font-size: clamp(28px, 6vw, 44px);
+  font-size: clamp(32px, 7vw, 52px);
   margin: 0;
   line-height: 1.15;
   font-weight: 800;
@@ -231,8 +273,7 @@ html, body {
   animation: wordIn .6s ease forwards;
 }
 .title .word:nth-child(1) { animation-delay: .1s; }
-.title .word:nth-child(2) { animation-delay: .3s; }
-.title .word:nth-child(3) { animation-delay: .5s; }
+.title .word:nth-child(2) { animation-delay: .35s; }
 .title .emoji {
   display: inline-block;
   margin-left: 6px;
@@ -241,12 +282,14 @@ html, body {
   to { opacity: 1; transform: translateY(0); }
 }
 .rainbow {
-  background: linear-gradient(90deg, #ff4d8d, #ffd166, #ff79a8, #ff4d8d);
+  background: linear-gradient(90deg, #ff4d8d, #ffd166, #ff79a8, #e63b78, #ff4d8d);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: wordIn .6s ease .5s forwards, rainbowMove 4s linear infinite;
+  animation: wordIn .6s ease .35s forwards, rainbowMove 4s linear infinite;
+  font-family: 'Brush Script MT', 'Segoe Script', cursive;
+  font-size: 1.15em;
 }
 @keyframes rainbowMove {
   0%   { background-position: 0% 50%; }
@@ -271,7 +314,6 @@ html, body {
 @keyframes typing { from { width: 0; } to { width: 100%; } }
 @keyframes blink  { 50% { border-color: transparent; } }
 
-/* Floaty deco emojis */
 .floaters { position: absolute; inset: 0; pointer-events: none; }
 .floaty {
   position: absolute;
@@ -285,18 +327,20 @@ html, body {
 .floaty.f4 { top: 70%; right: 4%; animation-delay: 1.5s; }
 .floaty.f5 { top: 35%; left: 90%; animation-delay: 2.8s; }
 .floaty.f6 { top: 85%; left: 50%; animation-delay: .6s;  }
+.floaty.f7 { top: 25%; left: 45%; animation-delay: 3.2s; }
+.floaty.f8 { top: 50%; right: 30%;animation-delay: 4s;   }
 @keyframes floatLoop {
   0%, 100% { transform: translateY(0) rotate(0); }
   50%      { transform: translateY(-18px) rotate(15deg); }
 }
 
-/* ============== KARTU UTAMA ============== */
+/* KARTU UTAMA */
 .card {
   position: relative;
   margin-top: 28px;
   padding: 32px 26px 26px;
   border-radius: 24px;
-  background: rgba(255, 255, 255, .7);
+  background: rgba(255, 255, 255, .72);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 2px solid rgba(255, 255, 255, .85);
@@ -323,13 +367,21 @@ html, body {
 
 .card-title {
   font-size: clamp(20px, 4.4vw, 26px);
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   color: var(--pink-600);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.love-quote {
+  margin: 0 0 18px;
+  color: var(--ink-soft);
+  font-size: 15px;
+  font-style: italic;
+  padding: 0 8px;
 }
 
 .details {
@@ -388,7 +440,7 @@ html, body {
   text-align: left;
 }
 
-/* ============== TOMBOL ============== */
+/* TOMBOL */
 .actions {
   margin-top: 22px;
   display: flex;
@@ -396,8 +448,9 @@ html, body {
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
+  min-height: 56px;
 }
-.btn-yes, .btn-no {
+.btn-yes, .btn-no, .btn-soft {
   border: none;
   cursor: pointer;
   font-size: 16px;
@@ -405,6 +458,9 @@ html, body {
   padding: 14px 24px;
   border-radius: 999px;
   transition: transform .2s ease, box-shadow .2s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 .btn-yes {
   background: linear-gradient(135deg, var(--pink-500), var(--rose), var(--gold));
@@ -440,9 +496,14 @@ html, body {
   position: relative;
   transition: transform .35s cubic-bezier(.34,1.56,.64,1), left .35s, top .35s;
 }
-.btn-no.run {
-  position: absolute;
+.btn-no.run { position: absolute; }
+
+.btn-soft {
+  background: #fff0f5;
+  color: var(--ink-soft);
+  border: 2px solid #ffd5e0;
 }
+.btn-soft:hover { background: #ffe1ec; }
 
 .tiny-hint {
   margin: 14px 0 0;
@@ -458,9 +519,7 @@ html, body {
   color: var(--ink-soft);
 }
 
-/* =========================================================
-   MODAL
-   ========================================================= */
+/* MODAL - SURAT CINTA */
 .modal {
   position: fixed;
   inset: 0;
@@ -471,40 +530,162 @@ html, body {
   z-index: 100;
   padding: 16px;
   animation: fadeIn .3s ease;
+  overflow-y: auto;
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 .modal-card {
-  background: var(--cream);
-  padding: 30px 26px;
+  background: var(--paper);
+  padding: 32px 26px 28px;
   border-radius: 24px;
   text-align: center;
-  max-width: 420px;
+  max-width: 460px;
   width: 100%;
   box-shadow: 0 30px 60px rgba(0,0,0,.3);
+  position: relative;
+  margin: auto;
 }
+.love-letter {
+  background:
+    repeating-linear-gradient(180deg, transparent 0 28px, rgba(255, 77, 141, .07) 28px 29px),
+    var(--paper);
+  border: 2px solid #ffd5e0;
+}
+.paper-deco {
+  position: absolute;
+  top: -12px; left: -12px;
+  width: 50px; height: 50px;
+  background: radial-gradient(circle, var(--pink-300), transparent 70%);
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
 .pop { animation: popIn .55s cubic-bezier(.34,1.56,.64,1); }
 @keyframes popIn {
-  from { opacity: 0; transform: scale(.5); }
-  to   { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(.5) rotate(-3deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0); }
 }
 .big-emoji {
   font-size: 70px;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .modal-card h3 {
-  margin: 6px 0;
+  margin: 6px 0 14px;
   color: var(--pink-600);
   font-size: 26px;
 }
-.modal-card p { color: var(--ink-soft); font-size: 15px; line-height: 1.5; margin: 8px 0; }
-.modal-card .small { font-size: 13px; }
-.modal-card .btn-yes { margin-top: 14px; }
+.rainbow-shine {
+  background: linear-gradient(90deg, #ff4d8d, #ffd166, #ff79a8, #e63b78, #ff4d8d);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbowMove 3s linear infinite;
+}
+.modal-card .lead {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 6px 0 18px;
+}
+.modal-card p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 8px 0;
+}
 
-/* =========================================================
-   CONFETTI CANVAS
-   ========================================================= */
+/* Pickup card (Aku jemput) */
+.pickup-card {
+  margin: 14px 0 18px;
+  padding: 18px 16px;
+  background: linear-gradient(135deg, #fff5f9, #fff1e0);
+  border: 2px dashed var(--pink-400);
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.pickup-label {
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pink-600);
+  font-weight: 700;
+}
+.pickup-main {
+  margin: 0 0 8px !important;
+  font-size: 22px !important;
+  color: var(--ink) !important;
+  font-weight: 700;
+  animation: gentlePop 2.5s ease-in-out infinite;
+}
+@keyframes gentlePop {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+.pickup-sub {
+  margin: 0 !important;
+  font-size: 14px !important;
+}
+
+/* Promise list */
+.promise-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 18px;
+  text-align: left;
+  display: grid;
+  gap: 8px;
+}
+.promise-list li {
+  background: #fff;
+  border: 1px solid #ffd5e0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--ink);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: slideIn .4s ease forwards;
+}
+.promise-list li:nth-child(1) { animation-delay: .2s; }
+.promise-list li:nth-child(2) { animation-delay: .4s; }
+.promise-list li:nth-child(3) { animation-delay: .6s; }
+.promise-list li:nth-child(4) { animation-delay: .8s; }
+.promise-list li:nth-child(5) { animation-delay: 1.0s; }
+@keyframes slideIn {
+  to { opacity: 1; transform: translateX(0); }
+}
+.promise-list li span { flex-shrink: 0; }
+
+.closing {
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 14px 0 6px !important;
+}
+.signature {
+  margin: 4px 0 14px !important;
+  font-family: 'Brush Script MT', 'Segoe Script', cursive;
+  font-size: 20px !important;
+  color: var(--pink-600) !important;
+  text-align: right;
+  padding-right: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+/* CONFETTI CANVAS */
 #confetti {
   position: fixed;
   inset: 0;
@@ -512,9 +693,7 @@ html, body {
   z-index: 90;
 }
 
-/* =========================================================
-   ANIMATION HELPERS
-   ========================================================= */
+/* ANIMATION HELPERS */
 .bounce      { display:inline-block; animation: bounce 1.4s ease infinite; }
 .bounce-soft { display:inline-block; animation: bounceSoft 2s ease infinite; }
 .pulse       { animation: pulse 1.6s ease infinite; }
@@ -522,6 +701,7 @@ html, body {
 .wiggle      { display:inline-block; animation: wiggle 1.8s ease infinite; }
 .wobble      { display:inline-block; animation: wobble 2.4s ease infinite; }
 .spin-slow   { display:inline-block; animation: spinSlow 6s linear infinite; }
+.sparkle     { display:inline-block; animation: sparkle 1.6s ease infinite; }
 .beat        { display:inline-block; color: var(--pink-500); animation: heartbeat 1s ease infinite; }
 
 @keyframes bounce {
@@ -555,12 +735,16 @@ html, body {
 @keyframes spinSlow {
   to { transform: rotate(360deg); }
 }
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0); opacity: 1; }
+  50%      { transform: scale(1.3) rotate(20deg); opacity: .7; }
+}
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/* RESPONSIVE */
 @media (max-width: 480px) {
-  .btn-yes, .btn-no { padding: 12px 18px; font-size: 14px; }
+  .btn-yes, .btn-no, .btn-soft { padding: 12px 18px; font-size: 14px; }
   .details li { padding: 10px 12px; }
   .details .ico { width: 38px; height: 38px; font-size: 20px; }
+  .pickup-main { font-size: 18px !important; }
+  .modal-card { padding: 26px 18px 22px; }
 }

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undangan Spesial Buat Kamu </title>
-  <meta name="description" content="Undangan makan siang romantis spesial untuk kamu yang spesial." />
+  <title>Untuk Oktalina </title>
+  <meta name="description" content="Undangan makan siang romantis spesial untuk Oktalina." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -12,6 +12,9 @@
 
   <!-- Layer Hati Bertaburan -->
   <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <!-- Tulisan "Oktalina" yang melayang di background -->
+  <div class="name-floats" id="nameFloats" aria-hidden="true"></div>
 
   <!-- Layer Confetti saat MAU -->
   <canvas id="confetti" aria-hidden="true"></canvas>
@@ -23,17 +26,19 @@
 
   <!-- ============ AMPLOP PEMBUKA ============ -->
   <section id="cover" class="cover">
-    <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Buka undangan">
+    <p class="cover-pre">Sebuah surat kecil...</p>
+    <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Buka undangan untuk Oktalina">
       <div class="env-flap"></div>
       <div class="env-body">
         <div class="env-letter">
           <div class="seal pulse"></div>
-          <p class="for">Untuk Calon Pacarku Tersayang </p>
-          <p class="hint">(Klik amplopnya yaa~)</p>
+          <p class="for">Untuk:</p>
+          <p class="for-name shimmer">Oktalina </p>
+          <p class="hint">(Klik amplopnya yaa, sayang~)</p>
         </div>
       </div>
     </div>
-    <p class="cover-tap">Tap / klik amplop untuk membuka </p>
+    <p class="cover-tap">Tap / klik amplopnya </p>
   </section>
 
   <!-- ============ ISI UNDANGAN ============ -->
@@ -47,13 +52,14 @@
         <span class="floaty f4"></span>
         <span class="floaty f5"></span>
         <span class="floaty f6"></span>
+        <span class="floaty f7"></span>
+        <span class="floaty f8"></span>
       </div>
 
-      <p class="kicker">— Sebuah Undangan Yang Sangat Penting —</p>
+      <p class="kicker">— Spesial untuk yang paling spesial —</p>
       <h1 class="title">
         <span class="word">Halo,</span>
-        <span class="word">Calon</span>
-        <span class="word rainbow">Pacarku</span>
+        <span class="word rainbow">Oktalina</span>
         <span class="emoji bounce"></span>
       </h1>
       <p class="subtitle typing">
@@ -69,16 +75,20 @@
 
       <h2 class="card-title">
         <span class="wiggle"></span>
-        Maukah Kamu Makan Bareng Aku?
+        Maukah Kamu Makan Siang Bareng Aku, Okta?
         <span class="wiggle"></span>
       </h2>
+
+      <p class="love-quote">
+        <em>"Dari sekian banyak orang di dunia, aku cuma pengen makan siang sama kamu, Oktalina."</em>
+      </p>
 
       <ul class="details">
         <li>
           <span class="ico spin-slow"></span>
           <div>
             <small>Hari & Jam</small>
-            <strong>Besok, Pukul 11.00 Siang</strong>
+            <strong>Besok, Pukul 11.00 Siang Tepat</strong>
           </div>
         </li>
         <li>
@@ -92,21 +102,28 @@
           <span class="ico heartbeat"></span>
           <div>
             <small>Bersama</small>
-            <strong>Aku & Kamu (semoga )</strong>
+            <strong>Aku & Kamu, Okta </strong>
           </div>
         </li>
         <li>
           <span class="ico wobble"></span>
           <div>
             <small>Dress Code</small>
-            <strong>Pakai senyum kamu yang paling manis </strong>
+            <strong>Pakai senyum kamu yang paling manis itu </strong>
+          </div>
+        </li>
+        <li>
+          <span class="ico sparkle"></span>
+          <div>
+            <small>Bonus</small>
+            <strong>Aku traktir + cerita-cerita lucu </strong>
           </div>
         </li>
       </ul>
 
       <p class="ps">
-        P.S. Aku udah latihan ngobrol di depan kaca biar gak salting.
-        Tapi kayaknya tetep bakal salting sih, hehe.
+        P.S. Okta, aku udah latihan ngobrol di depan kaca biar gak salting.
+        Tapi kayaknya tetep bakal salting sih, soalnya kamunya terlalu cantik.
       </p>
 
       <div class="actions">
@@ -124,19 +141,55 @@
     </section>
 
     <footer class="foot">
-      <p>Dibuat dengan <span class="beat"></span> khusus buat kamu.</p>
+      <p>Dibuat dengan <span class="beat"></span> khusus buat Oktalina.</p>
     </footer>
   </main>
 
-  <!-- ============ MODAL "MAU" ============ -->
+  <!-- ============ MODAL "MAU" - SURAT CINTA ============ -->
   <div id="yesModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="yesTitle">
-    <div class="modal-card pop">
+    <div class="modal-card pop love-letter">
+      <div class="paper-deco" aria-hidden="true"></div>
+
       <div class="big-emoji bounce"></div>
-      <h3 id="yesTitle">YEAYYY!! </h3>
-      <p>Kamu bikin hari ini jadi paling indah sedunia.<br>
-         Sampai ketemu besok jam <strong>11.00</strong> di <strong>Rumah Makan Doyok</strong> ya!</p>
-      <p class="small">Aku jemput? Atau ketemu di sana? Chat aku yaa </p>
-      <button class="btn-yes" onclick="closeYes()">Sip, sampai besok!</button>
+      <h3 id="yesTitle" class="rainbow-shine">YEAYYYY, OKTALINA!! </h3>
+
+      <p class="lead">
+        Kamu baru aja bikin aku jadi cowok paling beruntung sedunia 
+      </p>
+
+      <div class="pickup-card">
+        <p class="pickup-label">Pesan dari aku buat Okta:</p>
+        <p class="pickup-main">
+           <strong>Aku jemput kamu, ya!</strong>
+        </p>
+        <p class="pickup-sub">
+          Besok jam <strong>10.30</strong> aku udah di depan rumah Okta.<br>
+          Pakai baju yang Okta nyaman aja, gak perlu ribet —<br>
+          buat aku, Okta tuh udah cantik dari bangun tidur sampai bobo lagi.
+        </p>
+      </div>
+
+      <ul class="promise-list" aria-label="Janji kecil dari aku">
+        <li><span></span> Aku bakal dateng tepat waktu (gak akan bikin Okta nunggu)</li>
+        <li><span></span> Aku siapin lagu favorit Okta di mobil</li>
+        <li><span></span> Aku buka pintunya buat Okta, kayak di film-film</li>
+        <li><span></span> Pulangnya, aku anter sampai depan pintu rumah</li>
+        <li><span></span> Dan… aku siapin satu kejutan kecil. Rahasia~</li>
+      </ul>
+
+      <p class="closing">
+        Makasih ya Okta udah bilang "mau" — <br>
+        kamu gak tau aku senyum-senyum sendiri di sini. 
+      </p>
+
+      <p class="signature">— Yang besok jemput kamu </p>
+
+      <div class="modal-actions">
+        <a id="waBtn" class="btn-yes shine" href="#" target="_blank" rel="noopener">
+           Chat aku di WA
+        </a>
+        <button class="btn-soft" onclick="closeYes()">Tutup dulu </button>
+      </div>
     </div>
   </div>
 

@@ -1,10 +1,13 @@
 /* =========================================================
-   Undangan Makan Romantis - Script
+   Undangan Makan Romantis untuk Oktalina - Script
    ========================================================= */
+
+const NAMA = 'Oktalina';
+const PANGGILAN = 'Okta';
 
 /* ---------- 1. HATI BERTABURAN ---------- */
 const heartsLayer = document.getElementById('hearts');
-const heartChars = ['', '', '', '', '', ''];
+const heartChars = ['', '', '', '', '', '', ''];
 
 function spawnHeart() {
   const h = document.createElement('span');
@@ -18,6 +21,21 @@ function spawnHeart() {
   setTimeout(() => h.remove(), dur * 1000);
 }
 setInterval(spawnHeart, 350);
+
+/* ---------- 1b. NAMA "OKTALINA" MELAYANG DI BACKGROUND ---------- */
+const nameLayer = document.getElementById('nameFloats');
+function spawnName() {
+  const n = document.createElement('span');
+  n.className = 'name-float';
+  n.textContent = NAMA;
+  n.style.top = (5 + Math.random() * 90) + 'vh';
+  const dur = 12 + Math.random() * 10;
+  n.style.animationDuration = dur + 's';
+  nameLayer.appendChild(n);
+  setTimeout(() => n.remove(), dur * 1000);
+}
+for (let i = 0; i < 3; i++) setTimeout(spawnName, i * 1500);
+setInterval(spawnName, 4500);
 
 /* ---------- 2. AMPLOP COVER ---------- */
 const envelope = document.getElementById('envelope');
@@ -43,25 +61,27 @@ const tinyHint = document.getElementById('tinyHint');
 let dodgeCount = 0;
 const noTexts = [
   ' Gak mau ah',
-  ' Eits, gak segampang itu',
+  ' Eits, jangan dong Okta~',
   ' Coba tangkap dulu!',
   ' Kabuuur~',
-  ' Hayo mau kemana',
-  ' Yakin nih?',
+  ' Hayo Okta mau kemana',
+  ' Yakin nih, Okta?',
   ' Pilih yang pink aja~',
-  ' Aku malu~',
-  ' Sini sayang sini~'
+  ' Aku malu Okta~',
+  ' Sini sayang sini~',
+  ' Okta jangan tinggalin aku',
+  ' Aku gak bisa hidup tanpa Okta',
+  ' Sayaaang, mauu yaa?'
 ];
 
 function dodge() {
   dodgeCount++;
-  // Tombol harus kabur
   const parent = btnNo.parentElement;
   const pRect  = parent.getBoundingClientRect();
   const bRect  = btnNo.getBoundingClientRect();
 
   const maxX = Math.max(0, pRect.width  - bRect.width);
-  const maxY = 200; // ruang vertikal untuk gerak
+  const maxY = 220;
 
   const x = Math.random() * maxX;
   const y = (Math.random() - 0.5) * maxY;
@@ -70,16 +90,18 @@ function dodge() {
   btnNo.style.left = x + 'px';
   btnNo.style.top  = y + 'px';
 
-  // Ganti tulisan biar makin lucu
   const span = btnNo.querySelector('span');
   span.textContent = noTexts[dodgeCount % noTexts.length];
 
   if (dodgeCount === 3 && tinyHint) {
-    tinyHint.textContent = '(Hihi, susah ya nangkepnya~)';
+    tinyHint.textContent = '(Hihi, susah ya nangkepnya, Okta~)';
   }
   if (dodgeCount > 6) {
     btnNo.style.opacity = '.4';
     btnNo.style.filter  = 'blur(.5px)';
+  }
+  if (dodgeCount > 10 && tinyHint) {
+    tinyHint.textContent = '(Udah Okta, klik yang pink aja yuk )';
   }
 }
 btnNo.addEventListener('mouseenter', dodge);
@@ -90,12 +112,44 @@ btnNo.addEventListener('click', (e) => {
   dodge();
 });
 
-/* ---------- 4. TOMBOL "MAU" -> CONFETTI + MODAL ---------- */
-const btnYes  = document.getElementById('btnYes');
+/* ---------- 4. TOMBOL "MAU" -> CONFETTI + MODAL SURAT CINTA ---------- */
+const btnYes   = document.getElementById('btnYes');
 const yesModal = document.getElementById('yesModal');
+const waBtn    = document.getElementById('waBtn');
+
+// ====== ATUR NOMOR WA DI SINI ======
+// Format: 62xxxxxxxxxxx (tanpa + dan tanpa 0 di depan)
+// Kalau dikosongkan, tombol akan menyalin pesan ke clipboard.
+const WA_NUMBER = '';
+
+const waMessage =
+  `Halo sayang Okta~ \n\n` +
+  `Aku udah liat undangannya, dan… aku tau kamu bilang "MAU"! \n\n` +
+  `Besok jam 10.30 aku jemput kamu ya. ` +
+  `Pakai baju yang Okta nyaman aja, gak perlu ribet — ` +
+  `kamu udah cantik banget di mata aku.\n\n` +
+  `Sampai ketemu besok, Okta. Aku gak sabar~ `;
+
+if (WA_NUMBER) {
+  waBtn.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMessage)}`;
+} else {
+  waBtn.href = '#';
+  waBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText(waMessage);
+      waBtn.innerHTML = ' Pesan disalin! Tinggal paste ke WA';
+      setTimeout(() => { waBtn.innerHTML = ' Chat aku di WA'; }, 2500);
+    } catch {
+      waBtn.innerHTML = ' (Atur nomor WA dulu di script.js)';
+    }
+  });
+}
 
 btnYes.addEventListener('click', () => {
   burstConfetti();
+  setTimeout(burstConfetti, 600);
+  setTimeout(burstConfetti, 1200);
   setTimeout(() => yesModal.classList.remove('hidden'), 500);
 });
 
@@ -117,15 +171,15 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-const colors = ['#ff4d8d', '#ffd166', '#ff79a8', '#ff9ec1', '#ffb3cb', '#ffffff'];
-const shapes = ['rect', 'circle', 'heart'];
+const colors = ['#ff4d8d', '#ffd166', '#ff79a8', '#ff9ec1', '#ffb3cb', '#ffffff', '#e63b78'];
+const shapes = ['rect', 'circle', 'heart', 'heart'];
 
 function makePiece() {
   return {
     x: Math.random() * canvas.width,
     y: -20 - Math.random() * canvas.height * 0.4,
-    w: 8 + Math.random() * 8,
-    h: 8 + Math.random() * 12,
+    w: 8 + Math.random() * 10,
+    h: 8 + Math.random() * 14,
     vx: (Math.random() - 0.5) * 6,
     vy: 3 + Math.random() * 4,
     rot: Math.random() * Math.PI * 2,
@@ -138,14 +192,14 @@ function makePiece() {
 }
 
 function burstConfetti() {
-  for (let i = 0; i < 180; i++) confettiPieces.push(makePiece());
+  for (let i = 0; i < 200; i++) confettiPieces.push(makePiece());
   if (!confettiRunning) {
     confettiRunning = true;
     requestAnimationFrame(loopConfetti);
   }
 }
 
-function drawHeart(ctx, x, y, size) {
+function drawHeart(ctx, size) {
   ctx.beginPath();
   const s = size / 10;
   ctx.moveTo(0, -3 * s);
@@ -161,7 +215,7 @@ function loopConfetti() {
     p.x   += p.vx;
     p.y   += p.vy;
     p.rot += p.vr;
-    p.vy  += 0.05; // gravity sedikit
+    p.vy  += 0.05;
     p.life++;
 
     ctx.save();
@@ -175,7 +229,7 @@ function loopConfetti() {
       ctx.arc(0, 0, p.w/2, 0, Math.PI * 2);
       ctx.fill();
     } else {
-      drawHeart(ctx, 0, 0, p.w * 1.5);
+      drawHeart(ctx, p.w * 1.5);
     }
     ctx.restore();
   });
@@ -198,21 +252,10 @@ const musicIcon = document.getElementById('musicIcon');
 let audioCtx, masterGain, melodyTimer;
 let musicOn = false;
 
-// Sederhana: melodi pendek, looping, bunyi lembut.
 const melody = [
-  // [frekuensi Hz, durasi detik]
-  [523.25, .35], // C5
-  [659.25, .35], // E5
-  [783.99, .35], // G5
-  [880.00, .55], // A5
-  [783.99, .35], // G5
-  [659.25, .35], // E5
-  [587.33, .55], // D5
-  [523.25, .55], // C5
-  [659.25, .35], // E5
-  [698.46, .35], // F5
-  [783.99, .55], // G5
-  [659.25, .55], // E5
+  [523.25, .35], [659.25, .35], [783.99, .35], [880.00, .55],
+  [783.99, .35], [659.25, .35], [587.33, .55], [523.25, .55],
+  [659.25, .35], [698.46, .35], [783.99, .55], [659.25, .55],
 ];
 
 function playNote(freq, dur, when) {
