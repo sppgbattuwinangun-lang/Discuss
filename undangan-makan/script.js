@@ -2,8 +2,8 @@
    Undangan Makan Romantis untuk Oktalina - Script
    ========================================================= */
 
-const NAMA = 'Oktalina';
-const PANGGILAN = 'Okta';
+const NAMA = 'Olin';
+const PANGGILAN = 'Olin';
 
 /* ---------- 1. HATI BERTABURAN ---------- */
 const heartsLayer = document.getElementById('hearts');
@@ -61,16 +61,16 @@ const tinyHint = document.getElementById('tinyHint');
 let dodgeCount = 0;
 const noTexts = [
   ' Gak mau ah',
-  ' Eits, jangan dong Okta~',
+  ' Eits, jangan dong Olin~',
   ' Coba tangkap dulu!',
   ' Kabuuur~',
-  ' Hayo Okta mau kemana',
-  ' Yakin nih, Okta?',
+  ' Hayo Olin mau kemana',
+  ' Yakin nih, Olin?',
   ' Pilih yang pink aja~',
-  ' Aku malu Okta~',
+  ' Aku malu Olin~',
   ' Sini sayang sini~',
-  ' Okta jangan tinggalin aku',
-  ' Aku gak bisa hidup tanpa Okta',
+  ' Olin jangan tinggalin aku',
+  ' Aku gak bisa hidup tanpa Olin',
   ' Sayaaang, mauu yaa?'
 ];
 
@@ -94,14 +94,14 @@ function dodge() {
   span.textContent = noTexts[dodgeCount % noTexts.length];
 
   if (dodgeCount === 3 && tinyHint) {
-    tinyHint.textContent = '(Hihi, susah ya nangkepnya, Okta~)';
+    tinyHint.textContent = '(Hihi, susah ya nangkepnya, Olin~)';
   }
   if (dodgeCount > 6) {
     btnNo.style.opacity = '.4';
     btnNo.style.filter  = 'blur(.5px)';
   }
   if (dodgeCount > 10 && tinyHint) {
-    tinyHint.textContent = '(Udah Okta, klik yang pink aja yuk )';
+    tinyHint.textContent = '(Udah Olin, klik yang pink aja yuk )';
   }
 }
 btnNo.addEventListener('mouseenter', dodge);
@@ -117,18 +117,17 @@ const btnYes   = document.getElementById('btnYes');
 const yesModal = document.getElementById('yesModal');
 const waBtn    = document.getElementById('waBtn');
 
-// ====== ATUR NOMOR WA DI SINI ======
+// ====== NOMOR WA OLIN ======
 // Format: 62xxxxxxxxxxx (tanpa + dan tanpa 0 di depan)
-// Kalau dikosongkan, tombol akan menyalin pesan ke clipboard.
-const WA_NUMBER = '';
+const WA_NUMBER = '6282178316261';
 
 const waMessage =
-  `Halo sayang Okta~ \n\n` +
+  `Halo sayang Olin~ \n\n` +
   `Aku udah liat undangannya, dan… aku tau kamu bilang "MAU"! \n\n` +
   `Besok jam 10.30 aku jemput kamu ya. ` +
-  `Pakai baju yang Okta nyaman aja, gak perlu ribet — ` +
+  `Pakai baju yang Olin nyaman aja, gak perlu ribet — ` +
   `kamu udah cantik banget di mata aku.\n\n` +
-  `Sampai ketemu besok, Okta. Aku gak sabar~ `;
+  `Sampai ketemu besok, Olin. Aku gak sabar~ `;
 
 if (WA_NUMBER) {
   waBtn.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMessage)}`;
